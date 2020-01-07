@@ -1,0 +1,4 @@
+filePathIn=E:/PROJECTS/examples/adtSvetkov/resources/inData.txt
+filePathOut=E:/PROJECTS/examples/adtSvetkov/resources/outData.txt
+countExecutors=4
+blockSize=50
