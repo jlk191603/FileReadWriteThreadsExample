@@ -1,5 +1,8 @@
 package ru.systemsez.examples.frwt;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,7 +10,7 @@ import java.util.List;
 public class PoolForWriting{
 
     private final List<AppBlock> data;
-
+    private static final Logger logger = LogManager.getLogger( PoolForWriting.class);
     public PoolForWriting(){
         this.data = new ArrayList<>();
     }
@@ -20,6 +23,7 @@ public class PoolForWriting{
         synchronized( data ){
             data.add( appBlock );
         }
+        logger.debug( "add( AppBlock ) в очереди на запись блоков "  + data.size());
     }
 
 
@@ -29,6 +33,7 @@ public class PoolForWriting{
             block = findBlock( nextBlock );
             if( block != null ){
                 data.remove( block );
+                logger.debug( "getBlock( int ) в очереди на запись блоков "  + data.size());
             }
         }
         return block;
